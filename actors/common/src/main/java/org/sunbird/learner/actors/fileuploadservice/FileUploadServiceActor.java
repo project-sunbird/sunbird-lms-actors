@@ -9,10 +9,7 @@ import org.sunbird.actor.core.BaseActor;
 import org.sunbird.actor.router.ActorConfig;
 import org.sunbird.common.exception.ProjectCommonException;
 import org.sunbird.common.models.response.Response;
-import org.sunbird.common.models.util.ActorOperations;
-import org.sunbird.common.models.util.JsonKey;
-import org.sunbird.common.models.util.ProjectLogger;
-import org.sunbird.common.models.util.ProjectUtil;
+import org.sunbird.common.models.util.*;
 import org.sunbird.common.models.util.azure.CloudService;
 import org.sunbird.common.models.util.azure.CloudServiceFactory;
 import org.sunbird.common.request.Request;
@@ -47,12 +44,13 @@ public class FileUploadServiceActor extends BaseActor {
         fileExtension = split[split.length - 1];
       }
     }
-    String fName = "File-" + processId;
+    fileName = fileName.replace("."+fileExtension,"");
+    String fName = fileName +"-"+ processId;
     if (!StringUtils.isBlank(fileExtension)) {
       fName = fName + "." + fileExtension.toLowerCase();
       ProjectLogger.log("File - " + fName + " Extension is " + fileExtension);
     }
-
+    ProjectLogger.log("File name is :: "+fName, LoggerEnum.INFO.name());
     File file = new File(fName);
     FileOutputStream fos = null;
     String avatarUrl = null;

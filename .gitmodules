@@ -1,4 +1,4 @@
 [submodule "actors/sunbird-utils"]
 	path = actors/sunbird-utils
-	url = https://github.com/project-sunbird/sunbird-utils.git
-	branch = release-2.8.0
+	url = https://github.com/amit-tarento/sunbird-utils.git
+	branch = devcon-2020
